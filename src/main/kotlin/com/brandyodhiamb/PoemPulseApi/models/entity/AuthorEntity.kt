@@ -1,12 +1,11 @@
 package com.brandyodhiamb.PoemPulseApi.models.entity
 
-import com.brandyodhiamb.PoemPulseApi.utils.Constants.AUTHOR_TABLE
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank
 
 
 @Entity
-@Table(name = AUTHOR_TABLE )
+@Table(name = "authors_table" )
 class AuthorEntity {
 
     @Id

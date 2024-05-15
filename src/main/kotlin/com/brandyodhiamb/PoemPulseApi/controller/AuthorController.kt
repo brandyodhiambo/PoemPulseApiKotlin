@@ -1,16 +1,16 @@
 package com.brandyodhiamb.PoemPulseApi.controller
 
 import com.brandyodhiamb.PoemPulseApi.models.dto.AuthorDto
+import com.brandyodhiamb.PoemPulseApi.models.request.AuthorCreateRequest
+import com.brandyodhiamb.PoemPulseApi.models.updates.AuthorUpdateRequest
 import com.brandyodhiamb.PoemPulseApi.service.AuthorService
+import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PathVariable
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import org.springframework.web.bind.annotation.*
 
 @RestController
-@RequestMapping("api")
+@RequestMapping("api/")
 class AuthorController(private val authorService: AuthorService) {
 
     @GetMapping("authors")
@@ -19,4 +19,19 @@ class AuthorController(private val authorService: AuthorService) {
     @GetMapping("author/{id}")
     fun getAuthorById(@PathVariable id:Long):ResponseEntity<AuthorDto> =
         ResponseEntity(authorService.getAuthorById(id),HttpStatus.OK)
+
+    @PostMapping("create_author")
+    fun createAuthor(
+        @Valid @RequestBody createRequest: AuthorCreateRequest
+    ): ResponseEntity<AuthorDto> = ResponseEntity(authorService.createAuthor(createRequest),HttpStatus.OK)
+
+    @PatchMapping("update-author/{id}")
+    fun updateAuthor(
+        @PathVariable id: Long,
+        @Valid @RequestBody updateRequest: AuthorUpdateRequest
+    ): ResponseEntity<AuthorDto> = ResponseEntity(authorService.updateAuthor(id, updateRequest), HttpStatus.OK)
+
+    @DeleteMapping("delete-author/{id}")
+    fun deleteAuthor(@PathVariable id: Long): ResponseEntity<String> =
+        ResponseEntity(authorService.deleteAuthor(id), HttpStatus.OK)
 }

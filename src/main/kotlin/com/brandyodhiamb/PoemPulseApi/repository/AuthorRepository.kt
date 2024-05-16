@@ -1,6 +1,6 @@
 package com.brandyodhiamb.PoemPulseApi.repository
 
-import com.brandyodhiamb.PoemPulseApi.models.entity.AuthorEntity
+import com.brandyodhiamb.PoemPulseApi.models.entity.author.AuthorEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 

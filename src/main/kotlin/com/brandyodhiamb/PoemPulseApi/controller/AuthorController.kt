@@ -14,7 +14,12 @@ import org.springframework.web.bind.annotation.*
 class AuthorController(private val authorService: AuthorService) {
 
     @GetMapping("authors")
-    fun getAllAuthor():ResponseEntity<List<AuthorDto>> = ResponseEntity(authorService.getAllAuthors(),HttpStatus.OK)
+    fun getAllAuthors(): ResponseEntity<Map<String, List<String>>> {
+        val authors = authorService.getAllAuthors().map { it.name }
+        val response = mapOf("authors" to authors)
+        return ResponseEntity.ok(response)
+    }
+
 
     @GetMapping("author/{id}")
     fun getAuthorById(@PathVariable id:Long):ResponseEntity<AuthorDto> =

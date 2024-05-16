@@ -1,4 +1,4 @@
-package com.brandyodhiamb.PoemPulseApi.models.entity
+package com.brandyodhiamb.PoemPulseApi.models.entity.author
 
 import jakarta.persistence.*
 import jakarta.validation.constraints.NotBlank

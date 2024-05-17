@@ -34,7 +34,7 @@ class AuthorService(
         return convertEntityToAuthorDto(author)
     }
 
-    fun createAuthor(createRequest: AuthorCreateRequest): AuthorDto {
+    fun createAuthor(createRequest: Author): AuthorDto {
         if (authorRepository.doesAuthorExist(createRequest.name)) {
             throw BadRequestException("There is already an author with the name :${createRequest.name}")
         }
@@ -45,11 +45,11 @@ class AuthorService(
         return convertEntityToAuthorDto(savedAuthor)
     }
 
-    fun updateAuthor(id: Long, updateRequest: AuthorUpdateRequest): AuthorDto {
+    fun updateAuthor(id: Long, updateRequest: Author): AuthorDto {
         checkForAuthorId(id)
         val existingAuthor: AuthorEntity = authorRepository.findAuthorById(id)
 
-        for (prop in AuthorUpdateRequest::class.memberProperties) {
+        for (prop in Author::class.memberProperties) {
             if (prop.get(updateRequest) != null) {
                 val field: Field? = ReflectionUtils.findField(AuthorEntity::class.java, prop.name)
                 field?.let {
@@ -74,7 +74,7 @@ class AuthorService(
 
 
     // Util Functions
-    fun assignAuthorToEntity(authorEntity: AuthorEntity, authorCreateRequest: AuthorCreateRequest) {
+    fun assignAuthorToEntity(authorEntity: AuthorEntity, authorCreateRequest: Author) {
         authorEntity.name = authorCreateRequest.name
     }
 

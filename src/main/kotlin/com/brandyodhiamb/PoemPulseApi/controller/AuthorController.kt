@@ -1,6 +1,7 @@
 package com.brandyodhiamb.PoemPulseApi.controller
 
 import com.brandyodhiamb.PoemPulseApi.models.dto.AuthorDto
+import com.brandyodhiamb.PoemPulseApi.models.model.Author
 import com.brandyodhiamb.PoemPulseApi.models.request.AuthorCreateRequest
 import com.brandyodhiamb.PoemPulseApi.models.updates.AuthorUpdateRequest
 import com.brandyodhiamb.PoemPulseApi.service.AuthorService
@@ -27,13 +28,13 @@ class AuthorController(private val authorService: AuthorService) {
 
     @PostMapping("create_author")
     fun createAuthor(
-        @Valid @RequestBody createRequest: AuthorCreateRequest
+        @Valid @RequestBody createRequest: Author
     ): ResponseEntity<AuthorDto> = ResponseEntity(authorService.createAuthor(createRequest),HttpStatus.OK)
 
     @PatchMapping("update-author/{id}")
     fun updateAuthor(
         @PathVariable id: Long,
-        @Valid @RequestBody updateRequest: AuthorUpdateRequest
+        @Valid @RequestBody updateRequest: Author
     ): ResponseEntity<AuthorDto> = ResponseEntity(authorService.updateAuthor(id, updateRequest), HttpStatus.OK)
 
     @DeleteMapping("delete-author/{id}")

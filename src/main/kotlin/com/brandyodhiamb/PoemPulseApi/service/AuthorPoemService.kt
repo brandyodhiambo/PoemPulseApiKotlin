@@ -4,14 +4,18 @@ import com.brandyodhiamb.PoemPulseApi.models.dto.AuthorPoemDto
 import com.brandyodhiamb.PoemPulseApi.models.entity.author.AuthorPoemEntity
 import com.brandyodhiamb.PoemPulseApi.models.model.AuthorPoem
 import com.brandyodhiamb.PoemPulseApi.repository.AuthorPoemRepository
+import com.brandyodhiamb.PoemPulseApi.repository.AuthorRepository
 import org.springframework.stereotype.Service
 
 @Service
 class AuthorPoemService(
-    private val authorPoemRepository: AuthorPoemRepository
+    private val authorPoemRepository: AuthorPoemRepository,
+    private val authorRepository: AuthorRepository
 ) {
 
     fun createAuthorPoem(poem: AuthorPoem): AuthorPoemDto {
+        authorRepository.findAuthorByName(poem.author)
+            ?: throw RuntimeException("Author not found with name ${poem.author}")
         val poemEntity = AuthorPoemEntity()
         assignAuthorPoemToAuthorPoemEntity(poem,poemEntity)
         val savedPoemEntity = authorPoemRepository.save(poemEntity)
@@ -50,6 +54,8 @@ class AuthorPoemService(
         authorPoemEntity.author = authorPoem.author
         authorPoemEntity.lines = authorPoem.lines.joinToString(separator = "\n")
         authorPoemEntity.lineCount = authorPoem.lineCount
+        authorPoemEntity.authorEntity = authorRepository.findAuthorByName(authorPoem.author)
+            ?: throw RuntimeException("Author not found with name ${authorPoem.author}")
     }
 
     private fun convertAuthorPoemEntityToAuthorPoemDto(authorPoemEntity: AuthorPoemEntity): AuthorPoemDto {

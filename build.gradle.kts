@@ -31,7 +31,7 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.hibernate.orm:hibernate-gradle-plugin:6.4.2.Final")
 	runtimeOnly("com.h2database:h2")
-	runtimeOnly("org.postgresql:postgresql")
+	implementation ("org.postgresql:postgresql")
 
 	// Testing
 	testImplementation("org.springframework.boot:spring-boot-starter-test")

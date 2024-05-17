@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotNull
 
 
 @Entity
-@Table(name = "poems_table")
+@Table(name = "author_poems_table")
 class AuthorPoemEntity {
 
     @Id
@@ -29,4 +29,8 @@ class AuthorPoemEntity {
     @NotNull
     @Column(name = "line_count", nullable = false)
     var lineCount: Int = 0
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "author_id", nullable = false)
+    var authorEntity: AuthorEntity? = null
 }

@@ -8,6 +8,8 @@ interface AuthorRepository:JpaRepository<AuthorEntity,Long> {
 
     fun findAuthorById(id:Long): AuthorEntity
 
+    fun findAuthorByName(name:String): AuthorEntity?
+
 
 
     @Query("SELECT CASE WHEN COUNT(a) > 0 THEN TRUE ELSE FALSE END FROM AuthorEntity a WHERE a.name = ?1")

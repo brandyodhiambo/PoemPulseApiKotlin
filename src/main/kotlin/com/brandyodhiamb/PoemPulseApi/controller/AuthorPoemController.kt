@@ -32,4 +32,10 @@ class AuthorPoemController(private val authorPoemService: AuthorPoemService) {
     @DeleteMapping("delete-author-poem/{id}")
     fun deleteAuthorPoem(@PathVariable id: Long): ResponseEntity<String> =
         ResponseEntity(authorPoemService.deleteAuthorPoem(id), HttpStatus.OK)
+
+    @GetMapping("/random")
+    fun getRandomPoems(@RequestParam count: Int): ResponseEntity<List<AuthorPoemDto>> {
+        val randomPoems = authorPoemService.getRandomPoems(count)
+        return ResponseEntity.ok(randomPoems)
+    }
 }

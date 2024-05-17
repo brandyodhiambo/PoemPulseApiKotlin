@@ -48,6 +48,11 @@ class AuthorPoemService(
         }
     }
 
+    fun getRandomPoems(count: Int): List<AuthorPoemDto> {
+        val randomPoems = authorPoemRepository.findRandomPoems(count)
+        return randomPoems.map { convertAuthorPoemEntityToAuthorPoemDto(it) }
+    }
+
     //Util Functions
     fun assignAuthorPoemToAuthorPoemEntity(authorPoem: AuthorPoem, authorPoemEntity: AuthorPoemEntity) {
         authorPoemEntity.title = authorPoem.title

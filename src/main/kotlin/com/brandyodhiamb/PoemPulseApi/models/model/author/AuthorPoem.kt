@@ -1,4 +1,4 @@
-package com.brandyodhiamb.PoemPulseApi.models.model
+package com.brandyodhiamb.PoemPulseApi.models.model.author
 
 
 data class AuthorPoem(

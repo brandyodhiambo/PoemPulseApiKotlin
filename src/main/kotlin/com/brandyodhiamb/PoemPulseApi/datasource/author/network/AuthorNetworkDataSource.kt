@@ -1,7 +1,7 @@
 package com.brandyodhiamb.PoemPulseApi.datasource.author.network
 
 import com.brandyodhiamb.PoemPulseApi.datasource.author.AuthorDataSource
-import com.brandyodhiamb.PoemPulseApi.models.model.Author
+import com.brandyodhiamb.PoemPulseApi.models.model.author.Author
 import com.brandyodhiamb.PoemPulseApi.datasource.author.network.dto.AuthorList
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.http.ResponseEntity

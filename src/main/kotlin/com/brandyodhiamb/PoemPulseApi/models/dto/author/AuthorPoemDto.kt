@@ -1,4 +1,4 @@
-package com.brandyodhiamb.PoemPulseApi.models.dto
+package com.brandyodhiamb.PoemPulseApi.models.dto.author
 
 data class AuthorPoemDto(
     val title: String,

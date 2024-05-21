@@ -1,14 +1,12 @@
-package com.brandyodhiamb.PoemPulseApi.service
+package com.brandyodhiamb.PoemPulseApi.service.author
 
 import com.brandyodhiamb.PoemPulseApi.datasource.author.AuthorDataSource
 import com.brandyodhiamb.PoemPulseApi.exception.BadRequestException
-import com.brandyodhiamb.PoemPulseApi.models.model.Author
-import com.brandyodhiamb.PoemPulseApi.models.dto.AuthorDto
+import com.brandyodhiamb.PoemPulseApi.models.model.author.Author
+import com.brandyodhiamb.PoemPulseApi.models.dto.author.AuthorDto
 import com.brandyodhiamb.PoemPulseApi.models.entity.author.AuthorEntity
 import com.brandyodhiamb.PoemPulseApi.exception.NotFoundException
-import com.brandyodhiamb.PoemPulseApi.models.request.AuthorCreateRequest
-import com.brandyodhiamb.PoemPulseApi.models.updates.AuthorUpdateRequest
-import com.brandyodhiamb.PoemPulseApi.repository.AuthorRepository
+import com.brandyodhiamb.PoemPulseApi.repository.author.AuthorRepository
 import java.lang.reflect.Field
 import org.springframework.beans.factory.annotation.Qualifier
 import org.springframework.stereotype.Service
@@ -24,8 +22,8 @@ class AuthorService(
     fun getAllAuthors(): List<AuthorDto> {
         val dbAuthor =
             authorRepository.findAll().stream().map(this::convertEntityToAuthorDto).collect(Collectors.toList())
-        val networkAuthor = authorDataSource.getAuthors().map { convertAuthorToAuthorDto(it) }
-        return dbAuthor + networkAuthor
+       // val networkAuthor = authorDataSource.getAuthors().map { convertAuthorToAuthorDto(it) }
+        return dbAuthor //+ networkAuthor
     }
 
     fun getAuthorById(id: Long): AuthorDto {
@@ -36,7 +34,7 @@ class AuthorService(
 
     fun createAuthor(createRequest: Author): AuthorDto {
         if (authorRepository.doesAuthorExist(createRequest.name)) {
-            throw BadRequestException("There is already an author with the name :${createRequest.name}")
+            throw BadRequestException(message = "There is already an author with the name :${createRequest.name}")
         }
 
         val author = AuthorEntity()

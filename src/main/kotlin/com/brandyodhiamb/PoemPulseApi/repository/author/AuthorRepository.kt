@@ -1,4 +1,4 @@
-package com.brandyodhiamb.PoemPulseApi.repository
+package com.brandyodhiamb.PoemPulseApi.repository.author
 
 import com.brandyodhiamb.PoemPulseApi.models.entity.author.AuthorEntity
 import org.springframework.data.jpa.repository.JpaRepository

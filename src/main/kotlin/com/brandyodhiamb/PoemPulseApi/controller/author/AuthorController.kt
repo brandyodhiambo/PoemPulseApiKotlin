@@ -1,10 +1,8 @@
-package com.brandyodhiamb.PoemPulseApi.controller
+package com.brandyodhiamb.PoemPulseApi.controller.author
 
-import com.brandyodhiamb.PoemPulseApi.models.dto.AuthorDto
-import com.brandyodhiamb.PoemPulseApi.models.model.Author
-import com.brandyodhiamb.PoemPulseApi.models.request.AuthorCreateRequest
-import com.brandyodhiamb.PoemPulseApi.models.updates.AuthorUpdateRequest
-import com.brandyodhiamb.PoemPulseApi.service.AuthorService
+import com.brandyodhiamb.PoemPulseApi.models.dto.author.AuthorDto
+import com.brandyodhiamb.PoemPulseApi.models.model.author.Author
+import com.brandyodhiamb.PoemPulseApi.service.author.AuthorService
 import jakarta.validation.Valid
 import org.springframework.http.HttpStatus
 import org.springframework.http.ResponseEntity

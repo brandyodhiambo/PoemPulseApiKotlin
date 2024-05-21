@@ -1,7 +1,7 @@
 package com.brandyodhiamb.PoemPulseApi.datasource.author.mock
 
 import com.brandyodhiamb.PoemPulseApi.datasource.author.AuthorDataSource
-import com.brandyodhiamb.PoemPulseApi.models.model.Author
+import com.brandyodhiamb.PoemPulseApi.models.model.author.Author
 import org.springframework.stereotype.Repository
 
 @Repository("author_mock")

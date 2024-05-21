@@ -1,10 +1,10 @@
-package com.brandyodhiamb.PoemPulseApi.service
+package com.brandyodhiamb.PoemPulseApi.service.author
 
-import com.brandyodhiamb.PoemPulseApi.models.dto.AuthorPoemDto
+import com.brandyodhiamb.PoemPulseApi.models.dto.author.AuthorPoemDto
 import com.brandyodhiamb.PoemPulseApi.models.entity.author.AuthorPoemEntity
-import com.brandyodhiamb.PoemPulseApi.models.model.AuthorPoem
-import com.brandyodhiamb.PoemPulseApi.repository.AuthorPoemRepository
-import com.brandyodhiamb.PoemPulseApi.repository.AuthorRepository
+import com.brandyodhiamb.PoemPulseApi.models.model.author.AuthorPoem
+import com.brandyodhiamb.PoemPulseApi.repository.author.AuthorPoemRepository
+import com.brandyodhiamb.PoemPulseApi.repository.author.AuthorRepository
 import org.springframework.stereotype.Service
 
 @Service

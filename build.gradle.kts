@@ -30,6 +30,7 @@ dependencies {
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.hibernate.orm:hibernate-gradle-plugin:6.4.2.Final")
+	implementation("org.springdoc:springdoc-openapi-starter-webmvc-ui:2.5.0")
 	runtimeOnly("com.h2database:h2")
 	implementation ("org.postgresql:postgresql")
 
